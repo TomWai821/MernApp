@@ -30,8 +30,10 @@ const setGoal = asyncHandler(async(req,res) => {
 // @route    PUT /api/goals/:id
 // @acess    Private
 const updateGoal = asyncHandler(async(req,res) => {
+    
     const goal = await Goal.findById(req.params.id)
 
+    // Check goal is exist
     if(!goal){
         res.status(400)
         throw new Error('Goal not found')
@@ -62,6 +64,7 @@ const deleteGoal = asyncHandler(async(req,res) => {
     
     const goal = await Goal.findById(req.params.id)
 
+    // Check goal is exist
     if(!goal){
         throw new Error('Goal not found')
     }
