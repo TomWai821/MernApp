@@ -37,12 +37,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        reset: (state) => {
-            state.isLoading = false
-            state.isError = false
-            state.isSuccess = false
-            state.message = ''
-        }
+        reset: (state) => initialState 
     },
     extraReducers: (builder) => {
         builder
@@ -63,7 +58,7 @@ export const authSlice = createSlice({
             .addCase(login.pending, (state)=> {
                 state.isLoading = true
             })
-            .addCase(login.fulfilled, (state, action)=> {
+            .addCase(login.fulfilled, (state,action)=> {
                 state.isLoading = false
                 state.isSuccess = true
                 state.user = action.payload
